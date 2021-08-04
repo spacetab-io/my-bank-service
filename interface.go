@@ -1,23 +1,16 @@
 package main
 
-type Currency string
-
-const (
-	CurrencySBP Currency = "SBP"
-	CurrencyRUB Currency = "RUB"
-)
-
 type AccountInterface interface {
 	// AddFunds Позволяет внести на счёт сумму sum
-	AddFunds(sum float64)
+	AddFunds(sum float64) error
 	// SumProfit Рассчитывает процент по вкладу и полученные деньги вносит на счёт
-	SumProfit()
+	SumProfit() error
 	// Withdraw Производит списание со счёта по указанным правилам. Если списание выходит за рамки правил, выдаёт ошибку
-	Withdraw(f float64) error
+	Withdraw(sum float64) error
 	// GetCurrency Выдаёт валюту счёта
-	GetCurrency() Currency
+	GetCurrency() (string, error)
 	// GetAccountCurrencyRate Выдаёт курс валюты счёта к передаваемой валюте cur
-	GetAccountCurrencyRate(cur Currency) float64
+	GetAccountCurrencyRate(cur string) (float64, error)
 	// GetBalance Выдаёт баланс счёта в указанной валюте
-	GetBalance(cur Currency) float64
+	GetBalance(cur string) (float64, error)
 }
