@@ -3,8 +3,8 @@ package main
 type AccountInterface interface {
 	// AddFunds Позволяет внести на счёт сумму sum
 	AddFunds(sum float64) error
-	// SumProfit Рассчитывает процент по вкладу и полученные деньги вносит на счёт
-	SumProfit() error
+	// sumProfit Рассчитывает процент по вкладу и полученные деньги вносит на счёт
+	sumProfit() error
 	// Withdraw Производит списание со счёта по указанным правилам. Если списание выходит за рамки правил, выдаёт ошибку
 	Withdraw(sum float64) error
 	// GetCurrency Выдаёт валюту счёта
